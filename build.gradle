@@ -1,9 +1,9 @@
 plugins {
     id 'io.freefair.lombok'
     id 'uk.gov.laa.springboot.laa-spring-boot-gradle-plugin'
-    id 'io.sentry.jvm.gradle' version '6.5.0'
-    id 'com.dorongold.task-tree' version '2.1.1'
-    id 'com.diffplug.spotless' version '7.2.1'
+    id 'io.sentry.jvm.gradle' version '6.11.0'
+    id 'com.dorongold.task-tree' version '4.0.1'
+    id 'com.diffplug.spotless' version '8.6.0'
     id 'jacoco'
     id 'checkstyle'
 }
@@ -62,8 +62,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     implementation 'org.webjars:webjars-locator-lite'
-    implementation 'org.webjars.npm:govuk-frontend:5.13.0'
-    implementation 'org.webjars.npm:ministryofjustice__frontend:5.1.5'
+    implementation 'org.webjars.npm:govuk-frontend:6.2.0'
+    implementation 'org.webjars.npm:ministryofjustice__frontend:9.0.0'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
