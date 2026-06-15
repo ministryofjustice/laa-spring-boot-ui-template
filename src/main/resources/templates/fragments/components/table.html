@@ -1,0 +1,26 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="table" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.table.heading}">Table</h3>
+    <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m" th:text="#{components.table.caption}">Dates and amounts</caption>
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header" th:text="#{components.table.col1}">Date</th>
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric" th:text="#{components.table.col2}">Amount</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" th:text="#{components.table.row1.date}">First 6 weeks</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" th:text="#{components.table.row1.amount}">£45 per week</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" th:text="#{components.table.row2.date}">Next 33 weeks</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" th:text="#{components.table.row2.amount}">£39.05 per week</td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" th:text="#{components.table.row3.date}">Remaining weeks</td>
+                <td class="govuk-table__cell govuk-table__cell--numeric" th:text="#{components.table.row3.amount}">£27.90 per week</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

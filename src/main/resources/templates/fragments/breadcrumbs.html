@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="breadcrumbs(items)" class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="/" th:text="#{breadcrumbs.home}">Home</a>
+        </li>
+        <li th:each="item : ${items}" class="govuk-breadcrumbs__list-item">
+            <a th:if="${item.url != null}" class="govuk-breadcrumbs__link" th:href="${item.url}" th:text="${item.label}"></a>
+            <span th:unless="${item.url != null}" th:text="${item.label}"></span>
+        </li>
+    </ol>
+</div>
+</html>

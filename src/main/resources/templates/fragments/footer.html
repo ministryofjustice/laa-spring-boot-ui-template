@@ -1,0 +1,22 @@
+<footer th:fragment="footer" class="govuk-footer" role="contentinfo" xmlns:th="http://www.thymeleaf.org">
+    <div class="govuk-width-container">
+        <div class="govuk-footer__meta">
+            <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                <span class="govuk-footer__licence-description">
+                    <span th:text="#{footer.licence.prefix}">All content is available under the</span>
+                    <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" th:text="#{footer.licence.link}">Open Government Licence v3.0</a><span th:text="#{footer.licence.suffix}">, except where otherwise stated</span>
+                </span>
+            </div>
+            <div class="govuk-footer__meta-item">
+                <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/" th:text="#{footer.copyright}">© Crown copyright</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script type="module">
+  import { initAll as govukInitAll } from "/webjars/govuk-frontend/dist/govuk/govuk-frontend.min.js";
+  import { initAll as mojInitAll } from "/webjars/ministryofjustice__frontend/moj/moj-frontend.min.js";
+
+  govukInitAll();
+  mojInitAll();
+</script>

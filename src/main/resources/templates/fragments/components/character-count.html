@@ -1,0 +1,10 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="character-count" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.character-count.heading}">Character count</h3>
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="character-count" th:text="#{components.character-count.label}">Can you provide more detail?</label>
+            <div id="character-count-hint" class="govuk-hint" th:text="#{components.character-count.hint}">Do not include personal or financial information.</div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="character-count" name="character-count" rows="5" aria-describedby="character-count-hint"></textarea>
+        </div>
+    </div>
+</section>

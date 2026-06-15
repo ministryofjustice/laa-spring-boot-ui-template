@@ -1,0 +1,25 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="checkboxes" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.checkboxes.heading}">Checkboxes</h3>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <span class="govuk-fieldset__heading" th:text="#{components.checkboxes.legend}">Which types of waste do you transport?</span>
+            </legend>
+            <div id="waste-hint" class="govuk-hint" th:text="#{components.checkboxes.hint}">Select all that apply.</div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes" aria-describedby="waste-hint">
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="animal">
+                    <label class="govuk-label govuk-checkboxes__label" for="waste" th:text="#{components.checkboxes.option1}">Waste from animal carcasses</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                    <label class="govuk-label govuk-checkboxes__label" for="waste-2" th:text="#{components.checkboxes.option2}">Waste from mines or quarries</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                    <label class="govuk-label govuk-checkboxes__label" for="waste-3" th:text="#{components.checkboxes.option3}">Farm or agricultural waste</label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</section>

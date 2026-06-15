@@ -1,0 +1,11 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="notification-banner" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.notification-banner.heading}">Notification banner</h3>
+    <div class="govuk-notification-banner" role="region" data-module="govuk-notification-banner" aria-labelledby="govuk-notification-banner-title">
+        <div class="govuk-notification-banner__header">
+            <h4 class="govuk-notification-banner__title" id="govuk-notification-banner-title" th:text="#{components.notification-banner.title}">Important</h4>
+        </div>
+        <div class="govuk-notification-banner__content">
+            <p class="govuk-body" th:text="#{components.notification-banner.content}">You have 7 days left.</p>
+        </div>
+    </div>
+</section>

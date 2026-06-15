@@ -1,0 +1,14 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="error-summary" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.error-summary.heading}">Error summary</h3>
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+            <h4 class="govuk-error-summary__title" th:text="#{errors.summary.title}">There is a problem</h4>
+            <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                    <li><a href="#event-name" th:text="#{components.error-summary.link1}">Enter an event name</a></li>
+                    <li><a href="#more-detail" th:text="#{components.error-summary.link2}">Enter more detail</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

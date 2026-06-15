@@ -1,0 +1,84 @@
+plugins {
+    id 'io.freefair.lombok'
+    id 'uk.gov.laa.springboot.laa-spring-boot-gradle-plugin'
+    id 'io.sentry.jvm.gradle' version '6.5.0'
+    id 'com.dorongold.task-tree' version '2.1.1'
+    id 'com.diffplug.spotless' version '7.2.1'
+    id 'jacoco'
+    id 'checkstyle'
+}
+
+// Overrides the Tomcat version bundled with Spring Boot to fix known CVEs:
+// SNYK-JAVA-ORGAPACHETOMCATEMBED-16691231 (Critical - Improper Authentication)
+// SNYK-JAVA-ORGAPACHETOMCATEMBED-16643259 (High - Resource Allocation without Limits)
+// Remove once the Spring Boot parent BOM ships with >= 11.0.22.
+ext['tomcat.version'] = '11.0.22'
+
+group = 'uk.gov.justice.laa.springboot.ui'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+processResources {
+    filesMatching('application.yml') {
+        filter {
+            it.replace('@version@', version)
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/SpringBootUiApplication.class'])
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['**/SpringBootUiApplication.class'])
+        }))
+    }
+}
+
+bootRun {
+    sourceResources sourceSets.main
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'org.webjars:webjars-locator-lite'
+    implementation 'org.webjars.npm:govuk-frontend:5.13.0'
+    implementation 'org.webjars.npm:ministryofjustice__frontend:5.1.5'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        importOrder()
+        removeUnusedImports()
+        cleanthat()
+    }
+}

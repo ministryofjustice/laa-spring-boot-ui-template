@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<p th:fragment="error-message(field, errors)"
+   th:if="${#fields.hasErrors('__${field}__')}"
+   class="govuk-error-message">
+    <span class="govuk-visually-hidden" th:text="#{errors.prefix}">Error:</span>
+    <span th:errors="*{__${field}__}"></span>
+</p>
+</html>
