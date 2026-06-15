@@ -4,6 +4,7 @@ Shared utility functions: prompting, derivation, validation, file I/O.
 import os
 import re
 from pathlib import Path
+from typing import Optional
 
 from .constants import (
     _T_KEBAB, SKIP_DIRS, SKIP_FILES, SKIP_EXTS, JAVA_KEYWORDS,
@@ -150,7 +151,7 @@ def targeted_replace(path: Path, pairs: list[tuple[str, str]], dry_run: bool) ->
         print(f"    Updated ports in : {path.name}")
 
 
-def resolve_service_dir(root: Path, service_name: str) -> Path | None:
+def resolve_service_dir(root: Path, service_name: str) -> Optional[Path]:
     """Locate the service module directory that contains a build.gradle."""
     candidates = [
         root / f"{service_name}-service",

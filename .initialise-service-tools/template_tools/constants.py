@@ -29,7 +29,7 @@ SKIP_DIRS = {
 }
 SKIP_FILES = {
     "gradlew", "gradlew.bat", "gradle-wrapper.jar",
-    "initialise-service.py",
+    "initialise-service.py", ".DS_Store",
 }
 SKIP_EXTS = {
     ".class", ".jar", ".exe", ".png", ".jpg", ".jpeg",

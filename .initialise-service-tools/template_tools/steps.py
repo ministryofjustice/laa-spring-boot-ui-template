@@ -44,6 +44,7 @@ def step_rename_java_files(
     targets = [
         (f"{old_prefix}Application.java",     f"{new_prefix}Application.java"),
         (f"{old_prefix}ApplicationTests.java", f"{new_prefix}ApplicationTests.java"),
+        (f"{old_prefix}ApplicationIntegrationTest.java", f"{new_prefix}ApplicationIntegrationTest.java"),
     ]
     found = False
     for old_name, new_name in targets:
@@ -121,9 +122,7 @@ def step_apply_port_replacements(
     if old_server == new_server and old_mgmt == new_mgmt:
         return
 
-    app_yml = root / f"{service_name}-service" / "src" / "main" / "resources" / "application.yml"
-    if not app_yml.exists():
-        app_yml = root / f"{_T_KEBAB}-service" / "src" / "main" / "resources" / "application.yml"
+    app_yml = root / "src" / "main" / "resources" / "application.yml"
 
     targeted_replace(app_yml, [
         (f"port: {old_server}", f"port: {new_server}"),
@@ -138,6 +137,8 @@ def step_apply_port_replacements(
     ], dry_run)
     targeted_replace(root / "README.md", [
         (f"localhost:{old_server}", f"localhost:{new_server}"),
+        (f"localhost:{old_mgmt}", f"localhost:{new_mgmt}"),
+        (f"http-nio-{old_server}", f"http-nio-{new_server}"),
     ], dry_run)
 
 
@@ -158,7 +159,7 @@ def step_cleanup_readme(root: Path, service_name: str, dry_run: bool) -> None:
         flags=re.DOTALL,
     )
     updated = re.sub(
-        r"## Setup Instructions\n.*?(?=### Database scripts)",
+        r"## Setup Instructions\n.*?(?=## Build And Run Application)",
         (
             "## TODO: Update this README\n\n"
             "Replace this section with clear documentation for your service. "
