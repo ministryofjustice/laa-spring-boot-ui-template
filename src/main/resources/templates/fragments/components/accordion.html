@@ -1,0 +1,15 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="accordion" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.accordion.heading}">Accordion</h3>
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+                <h4 class="govuk-accordion__section-heading">
+                    <span class="govuk-accordion__section-button" id="accordion-default-heading-1" th:text="#{components.accordion.section1}">Past day</span>
+                </h4>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+                <p class="govuk-body" th:text="#{components.accordion.content1}">Example content.</p>
+            </div>
+        </div>
+    </div>
+</section>

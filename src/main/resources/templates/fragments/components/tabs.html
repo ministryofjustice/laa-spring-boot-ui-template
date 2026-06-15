@@ -1,0 +1,20 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="tabs" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.tabs.heading}">Tabs</h3>
+    <div class="govuk-tabs" data-module="govuk-tabs">
+        <h4 class="govuk-tabs__title" th:text="#{components.tabs.heading}">Tabs</h4>
+        <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected"><a class="govuk-tabs__tab" href="#past-day" th:text="#{components.tabs.tab1}">Past day</a></li>
+            <li class="govuk-tabs__list-item"><a class="govuk-tabs__tab" href="#past-week" th:text="#{components.tabs.tab2}">Past week</a></li>
+            <li class="govuk-tabs__list-item"><a class="govuk-tabs__tab" href="#past-month" th:text="#{components.tabs.tab3}">Past month</a></li>
+        </ul>
+        <div class="govuk-tabs__panel" id="past-day">
+            <p class="govuk-body" th:text="#{components.tabs.content1}">There is no new activity in the past day.</p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+            <p class="govuk-body" th:text="#{components.tabs.content2}">There have been 3 updates in the past week.</p>
+        </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-month">
+            <p class="govuk-body" th:text="#{components.tabs.content3}">There have been 12 updates in the past month.</p>
+        </div>
+    </div>
+</section>

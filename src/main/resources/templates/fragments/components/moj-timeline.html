@@ -1,0 +1,20 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="moj-timeline" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.moj.timeline.heading}">Timeline</h3>
+    <ol class="moj-timeline">
+        <li class="moj-timeline__item">
+            <div class="moj-timeline__header">
+                <h4 class="moj-timeline__title" th:text="#{components.moj.timeline.item1.title}">Application received</h4>
+                <p class="moj-timeline__byline" th:text="#{components.moj.timeline.item1.byline}">by the Legal Aid Agency</p>
+            </div>
+            <p class="moj-timeline__date"><time datetime="2024-01-15" th:text="#{components.moj.timeline.item1.date}">15 January 2024</time></p>
+            <div class="moj-timeline__description" th:text="#{components.moj.timeline.item1.description}">Your application has been received and is being reviewed.</div>
+        </li>
+        <li class="moj-timeline__item">
+            <div class="moj-timeline__header">
+                <h4 class="moj-timeline__title" th:text="#{components.moj.timeline.item2.title}">Application submitted</h4>
+            </div>
+            <p class="moj-timeline__date"><time datetime="2024-01-10" th:text="#{components.moj.timeline.item2.date}">10 January 2024</time></p>
+            <div class="moj-timeline__description" th:text="#{components.moj.timeline.item2.description}">Application was submitted by the applicant.</div>
+        </li>
+    </ol>
+</section>

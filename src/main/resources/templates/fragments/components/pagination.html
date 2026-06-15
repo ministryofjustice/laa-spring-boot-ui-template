@@ -1,0 +1,15 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="pagination" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.pagination.heading}">Pagination</h3>
+    <nav class="govuk-pagination" role="navigation" th:attr="aria-label=#{components.pagination.heading}">
+        <div class="govuk-pagination__prev">
+            <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+                <span class="govuk-pagination__link-title" th:text="#{components.pagination.previous}">Previous</span>
+            </a>
+        </div>
+        <div class="govuk-pagination__next">
+            <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+                <span class="govuk-pagination__link-title" th:text="#{components.pagination.next}">Next</span>
+            </a>
+        </div>
+    </nav>
+</section>

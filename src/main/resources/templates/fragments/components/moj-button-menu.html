@@ -1,0 +1,10 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="moj-button-menu" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.moj.button-menu.heading}">Button menu</h3>
+    <div class="moj-button-menu" data-module="moj-button-menu">
+        <button type="button" class="govuk-button moj-button-menu__toggle-button" aria-haspopup="true" aria-expanded="false" th:text="#{components.moj.button-menu.toggle}">Actions</button>
+        <div class="moj-button-menu__wrapper" role="list">
+            <button type="button" class="govuk-button govuk-button--secondary moj-button-menu__item" role="listitem" th:text="#{components.moj.button-menu.option1}">Edit</button>
+            <button type="button" class="govuk-button govuk-button--secondary moj-button-menu__item" role="listitem" th:text="#{components.moj.button-menu.option2}">Delete</button>
+        </div>
+    </div>
+</section>

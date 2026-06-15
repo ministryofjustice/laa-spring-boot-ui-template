@@ -1,0 +1,11 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="moj-search" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.moj.search.heading}">Search</h3>
+    <form class="moj-search" action="#" method="get">
+        <div class="govuk-form-group">
+            <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search" th:text="#{components.moj.search.label}">Find a case</label>
+            <div id="search-hint" class="govuk-hint moj-search__hint" th:text="#{components.moj.search.hint}">Enter the case reference or client name</div>
+            <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint">
+        </div>
+        <button type="submit" class="govuk-button moj-search__button" data-module="govuk-button" th:text="#{button.submit}">Submit</button>
+    </form>
+</section>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(#{form.example.success.page.title})}"></head>
+
+<body class="govuk-template__body govuk-frontend-supported">
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link" th:text="#{common.skip.link}">Skip to main content</a>
+<header th:replace="~{fragments/templates :: header}"></header>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title" th:text="#{form.example.success.panel.title}">Details submitted</h1>
+            <div class="govuk-panel__body" th:text="#{form.example.success.panel.body}">We have received your contact details.</div>
+        </div>
+
+        <p class="govuk-body" th:text="#{form.example.success.next.steps}">We will be in touch within 5 working days.</p>
+
+        <a href="/" class="govuk-link" th:text="#{form.example.success.home.link}">Return to homepage</a>
+    </main>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

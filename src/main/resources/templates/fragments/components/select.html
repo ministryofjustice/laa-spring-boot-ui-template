@@ -1,0 +1,11 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="select" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.select.heading}">Select</h3>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="sort" th:text="#{components.select.label}">Sort by</label>
+        <select class="govuk-select" id="sort" name="sort">
+            <option value="published" th:text="#{components.select.option1}">Recently published</option>
+            <option value="relevance" th:text="#{components.select.option2}">Relevance</option>
+            <option value="az" th:text="#{components.select.option3}">Alphabetical (A to Z)</option>
+        </select>
+    </div>
+</section>

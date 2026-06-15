@@ -1,0 +1,10 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="warning-text" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.warning-text.heading}">Warning text</h3>
+    <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive" th:text="#{components.warning-text.assistive}">Warning</span>
+            <span th:text="#{components.warning-text.content}">You can be fined up to £5,000 if you do not register.</span>
+        </strong>
+    </div>
+</section>

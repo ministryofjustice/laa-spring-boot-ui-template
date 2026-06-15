@@ -1,0 +1,8 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="textarea" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.textarea.heading}">Textarea</h3>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="more-detail" th:text="#{components.textarea.label}">Can you provide more detail?</label>
+        <div id="more-detail-hint" class="govuk-hint" th:text="#{components.textarea.hint}">Do not include personal or financial information.</div>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+    </div>
+</section>

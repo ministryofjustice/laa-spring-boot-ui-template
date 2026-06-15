@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="header" class="govuk-header" role="banner" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container">
+        <div class="govuk-header__logo">
+            <a href="/" class="govuk-header__link govuk-header__link--homepage">
+                <span class="govuk-header__logotype">
+                    <img src="/assets/images/moj-logo.png" class="govuk-header__logotype-crown-fallback-image" width="36" height="32" alt="">
+                    <span class="govuk-header__product-name" th:text="#{header.product.name}">Legal Aid Agency</span>
+                </span>
+            </a>
+        </div>
+    </div>
+</header>
+</html>

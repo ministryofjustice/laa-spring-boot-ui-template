@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(#{index.page.title})}"></head>
+
+<body class="govuk-template__body govuk-frontend-supported">
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link" th:text="#{common.skip.link}">Skip to main content</a>
+<header th:replace="~{fragments/templates :: header}"></header>
+
+<div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <h1 class="govuk-heading-xl" th:text="#{index.heading}">LAA Spring Boot UI Template</h1>
+
+        <div class="moj-banner" role="region" th:attr="aria-label=#{index.banner.aria}">
+            <div class="moj-banner__message" th:text="#{index.banner.message}">
+                Spring Boot 4 UI template using GOV.UK and MOJ components with WebJars.
+            </div>
+        </div>
+
+        <p class="govuk-body">
+            <span th:text="#{index.components.link.prefix}">Explore example components on the </span>
+            <a class="govuk-link" href="/components" th:text="#{index.components.link.text}">components page</a>
+            <span th:text="#{index.sentence.end}">.</span>
+        </p>
+
+        <p class="govuk-body">
+            <span th:text="#{index.form.link.prefix}">Try the example form with validation on the </span>
+            <a class="govuk-link" href="/example-form" th:text="#{index.form.link.text}">example form page</a>
+            <span th:text="#{index.sentence.end}">.</span>
+        </p>
+    </main>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

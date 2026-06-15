@@ -1,0 +1,31 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="date-input" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.date-input.heading}">Date input</h3>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <span class="govuk-fieldset__heading" th:text="#{components.date-input.legend}">When was your passport issued?</span>
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint" th:text="#{components.date-input.hint}">For example, 27 3 2007</div>
+            <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="passport-issued-day" th:text="#{components.date-input.day}">Day</label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="passport-issued-month" th:text="#{components.date-input.month}">Month</label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+                    </div>
+                </div>
+                <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="passport-issued-year" th:text="#{components.date-input.year}">Year</label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</section>

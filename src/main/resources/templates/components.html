@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(#{components.page.title})}"></head>
+
+<body class="govuk-template__body govuk-frontend-supported">
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link" th:text="#{common.skip.link}">Skip to main content</a>
+<header th:replace="~{fragments/templates :: header}"></header>
+
+<div class="govuk-width-container">
+    <nav class="govuk-breadcrumbs" th:attr="aria-label=#{components.breadcrumbs.aria}">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/" th:text="#{breadcrumbs.home}">Home</a>
+            </li>
+        </ol>
+    </nav>
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <h1 class="govuk-heading-xl" th:text="#{components.heading}">Component Examples</h1>
+        <p class="govuk-body govuk-!-margin-bottom-8" th:text="#{components.intro}">This page demonstrates GOV.UK and MOJ Design System components available for use in your service.</p>
+
+        <h2 class="govuk-heading-l" th:text="#{components.govuk.heading}">GOV.UK Components</h2>
+
+        <th:block th:replace="~{fragments/components/accordion :: accordion}"></th:block>
+        <th:block th:replace="~{fragments/components/back-link :: back-link}"></th:block>
+        <th:block th:replace="~{fragments/components/breadcrumbs :: breadcrumbs}"></th:block>
+        <th:block th:replace="~{fragments/components/button :: button}"></th:block>
+        <th:block th:replace="~{fragments/components/character-count :: character-count}"></th:block>
+        <th:block th:replace="~{fragments/components/checkboxes :: checkboxes}"></th:block>
+        <th:block th:replace="~{fragments/components/date-input :: date-input}"></th:block>
+        <th:block th:replace="~{fragments/components/details :: details}"></th:block>
+        <th:block th:replace="~{fragments/components/error-summary :: error-summary}"></th:block>
+        <th:block th:replace="~{fragments/components/inset-text :: inset-text}"></th:block>
+        <th:block th:replace="~{fragments/components/notification-banner :: notification-banner}"></th:block>
+        <th:block th:replace="~{fragments/components/pagination :: pagination}"></th:block>
+        <th:block th:replace="~{fragments/components/panel :: panel}"></th:block>
+        <th:block th:replace="~{fragments/components/phase-banner :: phase-banner}"></th:block>
+        <th:block th:replace="~{fragments/components/radios :: radios}"></th:block>
+        <th:block th:replace="~{fragments/components/select :: select}"></th:block>
+        <th:block th:replace="~{fragments/components/summary-list :: summary-list}"></th:block>
+        <th:block th:replace="~{fragments/components/table :: table}"></th:block>
+        <th:block th:replace="~{fragments/components/tabs :: tabs}"></th:block>
+        <th:block th:replace="~{fragments/components/tag :: tag}"></th:block>
+        <th:block th:replace="~{fragments/components/text-input :: text-input}"></th:block>
+        <th:block th:replace="~{fragments/components/textarea :: textarea}"></th:block>
+        <th:block th:replace="~{fragments/components/warning-text :: warning-text}"></th:block>
+
+        <h2 class="govuk-heading-l govuk-!-margin-top-9" th:text="#{components.moj.heading}">MOJ Components</h2>
+
+        <th:block th:replace="~{fragments/components/moj-action-bar :: moj-action-bar}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-badge :: moj-badge}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-banner :: moj-banner}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-button-menu :: moj-button-menu}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-identity-bar :: moj-identity-bar}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-interrupt-card :: moj-interrupt-card}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-search :: moj-search}"></th:block>
+        <th:block th:replace="~{fragments/components/moj-timeline :: moj-timeline}"></th:block>
+    </main>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

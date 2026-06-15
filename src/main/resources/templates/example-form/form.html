@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: head(#{form.example.page.title})}"></head>
+
+<body class="govuk-template__body govuk-frontend-supported">
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link" th:text="#{common.skip.link}">Skip to main content</a>
+<header th:replace="~{fragments/templates :: header}"></header>
+
+<div class="govuk-width-container">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/" th:text="#{breadcrumbs.home}">Home</a>
+            </li>
+        </ol>
+    </nav>
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+                <h1 class="govuk-heading-l" th:text="#{form.example.heading}">Your contact details</h1>
+
+                <form th:action="@{/example-form}" th:object="${exampleForm}" method="post" novalidate>
+
+                    <!-- Error summary — must be inside th:object scope to use #fields -->
+                    <div th:if="${#fields.hasAnyErrors()}"
+                         class="govuk-error-summary"
+                         data-module="govuk-error-summary">
+                        <div role="alert">
+                            <h2 class="govuk-error-summary__title" th:text="#{errors.summary.title}">There is a problem</h2>
+                            <div class="govuk-error-summary__body">
+                                <ul class="govuk-list govuk-error-summary__list">
+                                    <li th:each="error : ${#fields.detailedErrors()}">
+                                        <a th:href="${'#' + error.fieldName}" th:text="${error.message}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full name -->
+                    <div th:classappend="${#fields.hasErrors('fullName')} ? 'govuk-form-group--error'"
+                         class="govuk-form-group">
+                        <label class="govuk-label" for="fullName" th:text="#{form.example.fullName.label}">Full name</label>
+                        <div th:if="${#fields.hasErrors('fullName')}" class="govuk-hint">
+                            <p class="govuk-error-message">
+                                <span class="govuk-visually-hidden" th:text="#{errors.prefix}">Error:</span>
+                                <span th:errors="*{fullName}"></span>
+                            </p>
+                        </div>
+                        <input class="govuk-input"
+                               th:classappend="${#fields.hasErrors('fullName')} ? 'govuk-input--error'"
+                               id="fullName"
+                               name="fullName"
+                               type="text"
+                               autocomplete="name"
+                               th:value="*{fullName}">
+                    </div>
+
+                    <!-- Email address -->
+                    <div th:classappend="${#fields.hasErrors('emailAddress')} ? 'govuk-form-group--error'"
+                         class="govuk-form-group">
+                        <label class="govuk-label" for="emailAddress" th:text="#{form.example.emailAddress.label}">Email address</label>
+                        <div id="emailAddress-hint" class="govuk-hint" th:text="#{form.example.emailAddress.hint}">We'll only use this to send you a confirmation.</div>
+                        <div th:if="${#fields.hasErrors('emailAddress')}">
+                            <p class="govuk-error-message">
+                                <span class="govuk-visually-hidden" th:text="#{errors.prefix}">Error:</span>
+                                <span th:errors="*{emailAddress}"></span>
+                            </p>
+                        </div>
+                        <input class="govuk-input govuk-input--width-20"
+                               th:classappend="${#fields.hasErrors('emailAddress')} ? 'govuk-input--error'"
+                               id="emailAddress"
+                               name="emailAddress"
+                               type="email"
+                               autocomplete="email"
+                               aria-describedby="emailAddress-hint"
+                               th:value="*{emailAddress}">
+                    </div>
+
+                    <!-- Contact preference (radios) -->
+                    <div th:classappend="${#fields.hasErrors('contactPreference')} ? 'govuk-form-group--error'"
+                         class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                                <h2 class="govuk-fieldset__heading" th:text="#{form.example.contactPreference.legend}">How would you prefer to be contacted?</h2>
+                            </legend>
+                            <div th:if="${#fields.hasErrors('contactPreference')}">
+                                <p class="govuk-error-message">
+                                    <span class="govuk-visually-hidden" th:text="#{errors.prefix}">Error:</span>
+                                    <span th:errors="*{contactPreference}"></span>
+                                </p>
+                            </div>
+                            <div class="govuk-radios" data-module="govuk-radios">
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input"
+                                           id="contactPreference"
+                                           name="contactPreference"
+                                           type="radio"
+                                           value="email"
+                                           th:checked="*{contactPreference == 'email'}">
+                                    <label class="govuk-label govuk-radios__label" for="contactPreference"
+                                           th:text="#{form.example.contactPreference.email}">Email</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input"
+                                           id="contactPreference-phone"
+                                           name="contactPreference"
+                                           type="radio"
+                                           value="phone"
+                                           th:checked="*{contactPreference == 'phone'}">
+                                    <label class="govuk-label govuk-radios__label" for="contactPreference-phone"
+                                           th:text="#{form.example.contactPreference.phone}">Phone</label>
+                                </div>
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input"
+                                           id="contactPreference-post"
+                                           name="contactPreference"
+                                           type="radio"
+                                           value="post"
+                                           th:checked="*{contactPreference == 'post'}">
+                                    <label class="govuk-label govuk-radios__label" for="contactPreference-post"
+                                           th:text="#{form.example.contactPreference.post}">Post</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="govuk-button-group">
+                        <button type="submit" class="govuk-button" data-module="govuk-button"
+                                th:text="#{button.continue}">Continue</button>
+                        <a class="govuk-link" href="/" th:text="#{button.cancel}">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

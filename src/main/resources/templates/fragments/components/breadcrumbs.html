@@ -1,0 +1,13 @@
+<section class="govuk-!-margin-bottom-8" th:fragment="breadcrumbs" xmlns:th="http://www.thymeleaf.org">
+    <h3 class="govuk-heading-m" th:text="#{components.breadcrumbs.heading}">Breadcrumbs</h3>
+    <nav class="govuk-breadcrumbs" th:attr="aria-label=#{components.breadcrumbs.aria}">
+        <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="/" th:text="#{breadcrumbs.home}">Home</a>
+            </li>
+            <li class="govuk-breadcrumbs__list-item">
+                <span th:text="#{components.heading}">Component Examples</span>
+            </li>
+        </ol>
+    </nav>
+</section>
