@@ -123,7 +123,7 @@ jobs:
         continue-on-error: true
         uses: snyk/actions/docker@9adf32b1121593767fc3c057af55b55db032dc04
         env:
-          SNYK_TOKEN: ${{ steps.auth.outputs.token }}
+          SNYK_OAUTH_TOKEN: ${{ steps.auth.outputs.token }}
         with:
           image: laa-spring-boot-ui:scan
           args: --file=Dockerfile
@@ -131,7 +131,7 @@ jobs:
       - name: Monitor docker image using Snyk
         uses: snyk/actions/docker@9adf32b1121593767fc3c057af55b55db032dc04
         env:
-          SNYK_TOKEN: ${{ steps.auth.outputs.token }}
+          SNYK_OAUTH_TOKEN: ${{ steps.auth.outputs.token }}
         with:
           command: monitor
           image: laa-spring-boot-ui:scan
