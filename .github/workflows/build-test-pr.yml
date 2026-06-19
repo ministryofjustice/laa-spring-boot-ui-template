@@ -78,8 +78,8 @@ jobs:
         id: auth
         uses: ministryofjustice/laa-reusable-github-actions/.github/actions/snyk-auth@6db001458db30ae747d9eb8eb25707ce52b359bc # v??? no versioning on the action currently
         with:
-          client_id: ${{ secrets.snyk_client_id }}
-          client_secret: ${{ secrets.snyk_client_secret }}
+          client_id: ${{ secrets.SNYK_CLIENT_ID }}
+          client_secret: ${{ secrets.SNYK_CLIENT_SECRET }}
 
       - name: Run Snyk to check app for vulnerabilities
         run: snyk code test --severity-threshold=high
@@ -98,8 +98,8 @@ jobs:
       image_scan_severity: high
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
-      snyk_client_id: ${{ secrets.snyk_client_id }}
-      snyk_client_secret: ${{ secrets.snyk_client_secret }}
+      snyk_client_id: ${{ secrets.SNYK_CLIENT_ID }}
+      snyk_client_secret: ${{ secrets.SNYK_CLIENT_SECRET }}
       ecr_region: not-required
       ecr_repository: not-required
       ecr_role_to_assume: not-required

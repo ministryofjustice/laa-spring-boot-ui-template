@@ -61,7 +61,7 @@ Review `.github/CODEOWNERS` and update approvals if your team or service require
 Review `.github/dependabot.yml`, uncomment the private package registry if needed, and update any package patterns that should be grouped differently for your application.
 
 ### Add Repository To Snyk
-Add the repository to the [Legal Aid Agency Snyk](https://app.snyk.io/org/legal-aid-agency) organisation and configure `snyk_client_id` and `snyk_client_secret` as repository secrets for an OAuth 2.0 service account.
+Add the repository to the [Legal Aid Agency Snyk](https://app.snyk.io/org/legal-aid-agency) organisation and configure `SNYK_CLIENT_ID` and `SNYK_CLIENT_SECRET` as repository secrets for an OAuth 2.0 service account.
 
 ### Update Project Files
 When turning this template into a real service, update:
