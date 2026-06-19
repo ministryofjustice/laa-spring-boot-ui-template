@@ -58,13 +58,20 @@ jobs:
           path: build/reports/jacoco
           retention-days: 14
           
-  snyk-auth:
+  vulnerability-scan-app:
     runs-on: ubuntu-latest
     needs:
       - build-test
-    outputs:
-      token: ${{ steps.auth.outputs.token }}
+    env:
+      SNYK_TEST_EXCLUDE: build,generated
+      SNYK_TARGET_REFERENCE: main
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup Snyk
+        uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1.0.0
+
       - name: Obtain Short-lived Snyk token
         id: auth
         uses: ministryofjustice/laa-reusable-github-actions/.github/actions/snyk-auth@6db001458db30ae747d9eb8eb25707ce52b359bc # v??? no versioning on the action currently
@@ -72,37 +79,21 @@ jobs:
           client_id: ${{ secrets.snyk_client_id }}
           client_secret: ${{ secrets.snyk_client_secret }}
 
-  vulnerability-scan-app:
-    runs-on: ubuntu-latest
-    needs:
-      - build-test
-      - snyk-auth
-    env:
-      SNYK_TEST_EXCLUDE: build,generated
-      SNYK_TARGET_REFERENCE: main
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      SNYK_OAUTH_TOKEN: ${{ needs.snyk-auth.outputs.token }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Setup Snyk
-        uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1.0.0
-
       - name: Run Snyk to check app for vulnerabilities
         run: snyk code test --severity-threshold=high
+        env:
+          SNYK_OAUTH_TOKEN: ${{ steps.auth.outputs.token }}
 
   vulnerability-scan-docker:
     runs-on: ubuntu-latest
     needs:
       - build-test
-      - snyk-auth
     permissions:
       contents: read
       packages: read
       security-events: write
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      SNYK_TOKEN: ${{ needs.snyk-auth.outputs.token }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -121,15 +112,26 @@ jobs:
       - name: Build docker image
         run: docker build --tag laa-spring-boot-ui:scan --file Dockerfile .
 
+      - name: Obtain Short-lived Snyk token
+        id: auth
+        uses: ministryofjustice/laa-reusable-github-actions/.github/actions/snyk-auth@6db001458db30ae747d9eb8eb25707ce52b359bc # v??? no versioning on the action currently
+        with:
+          client_id: ${{ secrets.snyk_client_id }}
+          client_secret: ${{ secrets.snyk_client_secret }}
+
       - name: Scan docker image using Snyk
         continue-on-error: true
         uses: snyk/actions/docker@9adf32b1121593767fc3c057af55b55db032dc04
+        env:
+          SNYK_TOKEN: ${{ steps.auth.outputs.token }}
         with:
           image: laa-spring-boot-ui:scan
           args: --file=Dockerfile
 
       - name: Monitor docker image using Snyk
         uses: snyk/actions/docker@9adf32b1121593767fc3c057af55b55db032dc04
+        env:
+          SNYK_TOKEN: ${{ steps.auth.outputs.token }}
         with:
           command: monitor
           image: laa-spring-boot-ui:scan
