@@ -72,7 +72,6 @@ jobs:
       security-events: write
 
     env:
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
@@ -87,13 +86,24 @@ jobs:
       - name: Setup Snyk
         uses: snyk/actions/setup@9adf32b1121593767fc3c057af55b55db032dc04 # v1.0.0
 
+      - name: Obtain Short-lived Snyk token
+        id: auth
+        uses: ministryofjustice/laa-reusable-github-actions/.github/actions/snyk-auth@6db001458db30ae747d9eb8eb25707ce52b359bc # v??? no versioning on the action currently
+        with:
+          client_id: ${{ secrets.snyk_client_id }}
+          client_secret: ${{ secrets.snyk_client_secret }}
+
       - name: Run Snyk to check app for vulnerabilities
         run: snyk monitor --severity-threshold=high
         continue-on-error: true
+        env:
+          SNYK_OAUTH_TOKEN: ${{ steps.auth.outputs.token }}
 
       - name: Generate sarif Snyk report
         run: snyk test --sarif-file-output=snyk-app.sarif
         continue-on-error: true
+        env:
+          SNYK_OAUTH_TOKEN: ${{ steps.auth.outputs.token }}
 
       - name: Fix undefined values
         run: |
