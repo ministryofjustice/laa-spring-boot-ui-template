@@ -1,4 +1,6 @@
-FROM amazoncorretto:25
+FROM ghcr.io/ministryofjustice/laa-amazoncorretto:25-jre-alpine
+
+USER root
 
 RUN mkdir -p /opt/laa-spring-boot-ui/
 WORKDIR /opt/laa-spring-boot-ui/
